@@ -1,0 +1,53 @@
+.table{
+	-fx-background-color : #a0d2eb;
+	-fx-background-radius: 50 50 50 50;
+}
+.blue
+{
+	-fx-background-color : #bee1e6;
+	-fx-background-radius : 30 30 30 30;
+
+}
+.blue:hover
+{
+	-fx-background-color : #f0efeb;
+	-fx-background-radius : 20 20 20 20;
+}
+.blue:pressed
+{
+	-fx-background-color : #2a9d8f;
+	-fx-background-radius : 30 30 30 30;
+}
+.root
+{
+	-fx-background-color : #333;
+}
+.exit
+{
+	-fx-background-color : #f0efeb;
+	-fx-background-radius : 5 5 5 5;
+
+}
+.exit:hover
+{
+	-fx-background-color : #cfdbd5;
+	-fx-background-radius : 1 1 1 1;
+}
+.triangel{
+	-fx-background-color : #2c698d;
+}
+.pages{
+	-fx-background-color :  #282820;
+	
+}
+.text-simple { 
+ 	-fx-font-smoothing-type: lcd;
+ 	-fx-fill: black;
+}
+.back{
+	-fx-background-color : #333;
+}
+.back:hover{
+	-fx-background-color : #b7c0ee;
+	
+}
