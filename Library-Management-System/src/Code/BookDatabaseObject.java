@@ -6,11 +6,11 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookDatabaseObject implements BookDAO { // Data Acces Object class for books
+public class BookDatabaseObject implements BookRepository { // Data Acces Object class for books
 	@Override
 	public void add(Book book) { // To add new product
 		try {
-			Connection con = LibraryDB.getConnection();
+			Connection con = DBConfigurations.getConnection();
 			String sql = "INSERT INTO librarysql.book(name,author,pageNumber,ISBN,quantity) VALUES (?,?,?,?,?)";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, book.getName());
@@ -27,7 +27,7 @@ public class BookDatabaseObject implements BookDAO { // Data Acces Object class 
 	@Override
 	public void update(Book book) { // To update an existing product
 		try {
-			Connection con = LibraryDB.getConnection();
+			Connection con = DBConfigurations.getConnection();
 			String sql = "UPDATE librarysql.book SET name=?,author=?,pageNumber=?,ISBN=?,quantity=? WHERE ISBN=?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, book.getName());
@@ -45,7 +45,7 @@ public class BookDatabaseObject implements BookDAO { // Data Acces Object class 
 	@Override
 	public void delete(String ISBN) {
 		try {
-			Connection con = LibraryDB.getConnection();
+			Connection con = DBConfigurations.getConnection();
 			String sql = "DELETE FROM librarysql.book WHERE ISBN=?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, ISBN);
@@ -59,7 +59,7 @@ public class BookDatabaseObject implements BookDAO { // Data Acces Object class 
 	public Book get(String ISBN) {
 		Book bk = new Book();
 		try {
-			Connection con = LibraryDB.getConnection();
+			Connection con = DBConfigurations.getConnection();
 			String sql = "SELECT * FROM librarysql.book WHERE ISBN =?";
 			PreparedStatement bs = con.prepareStatement(sql);
 			bs.setString(1, ISBN);
@@ -79,7 +79,7 @@ public class BookDatabaseObject implements BookDAO { // Data Acces Object class 
 	public List<Book> Search(String string,boolean isAdmin) {
 		List<Book> list = new ArrayList<>();
 		try {
-			Connection con = LibraryDB.getConnection();
+			Connection con = DBConfigurations.getConnection();
 			String sql = "SELECT * FROM librarysql.book WHERE INSTR(name,?) > 0 OR INSTR(author,?) > 0";
 			if (!isAdmin) {
 			    sql += " AND NOT quantity=0";
@@ -107,7 +107,7 @@ public class BookDatabaseObject implements BookDAO { // Data Acces Object class 
 	public List<Book> list() {
 		List<Book> list = new ArrayList<>();
 		try {
-			Connection con = LibraryDB.getConnection();
+			Connection con = DBConfigurations.getConnection();
 			String sql = "SELECT * FROM librarysql.book";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();

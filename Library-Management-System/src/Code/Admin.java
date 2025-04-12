@@ -65,7 +65,7 @@ public class Admin extends Person {
 	public boolean giveBook(String ISBN, int ID) {
 	    BookDatabaseObject bookdao = new BookDatabaseObject();
 	    Book book = Library.getBookByISBN(ISBN);
-	    PersonDAO_Imp persondao = new PersonDAO_Imp();
+	    PersonRepository_Imp persondao = new PersonRepository_Imp();
 	    User user = Library.getUserByID(ID);
 
 	    try {
@@ -106,7 +106,7 @@ public class Admin extends Person {
 	public boolean bookReturn(String ISBN, int ID) {
 	    try {
 	        BookDatabaseObject bookdao = new BookDatabaseObject();
-	        PersonDAO_Imp persondao = new PersonDAO_Imp();
+	        PersonRepository_Imp persondao = new PersonRepository_Imp();
 
 	        User user = Library.getUserByID(ID);
 	        Book book = user.getBookByISBN(ISBN);

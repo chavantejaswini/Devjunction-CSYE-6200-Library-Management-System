@@ -8,7 +8,7 @@ import java.util.List;
 import Code.Admin;
 import Code.Book;
 import Code.User;
-import Code.PersonDAO_Imp;
+import Code.PersonRepository_Imp;
 import Code.BookDatabaseObject;
 
 public class Library {
@@ -18,7 +18,7 @@ public class Library {
 	private static LocalDate date= LocalDate.now();
 
 	public static void syncData() {
-	 PersonDAO_Imp personDAO=new PersonDAO_Imp();
+	 PersonRepository_Imp personDAO=new PersonRepository_Imp();
 	 BookDatabaseObject bookDAO=new BookDatabaseObject();
 	 books=bookDAO.list();
 	 users=personDAO.listUsers();

@@ -7,75 +7,110 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="609.0" prefWidth="982.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/17" style="-fx-background-color: #e3f6f5; -fx-background-radius: 10;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
+<AnchorPane prefHeight="609.0" prefWidth="982.0" stylesheets="@application.css" style="-fx-background-color: white; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
    <children>
-      <Button layoutX="620.0" layoutY="457.0" mnemonicParsing="false" onAction="#switchAdminSignUp" prefHeight="44.0" prefWidth="220.0" stylesheets="@application.css" text="Create Account" textFill="#070403">
-         <font>
-            <Font name="Futura Medium" size="21.0" />
-         </font>
-      </Button>
-      <Label layoutX="552.0" layoutY="191.0" prefHeight="107.0" prefWidth="273.0" text="ID : " textFill="#070403">
-         <font>
-            <Font name="Futura Medium" size="30.0" />
-         </font>
-      </Label>
-      <Button layoutX="620.0" layoutY="390.0" mnemonicParsing="false" onAction="#switchAdminLogIn" prefHeight="44.0" prefWidth="164.0" text="Log In" textFill="#070403">
-         <font>
-            <Font name="Futura Medium" size="21.0" />
-         </font>
-      </Button>
-      <Button layoutX="1100.0" layoutY="571.0" mnemonicParsing="false" onAction="#exitProgram" prefHeight="53.0" prefWidth="93.0" styleClass="back" stylesheets="@application.css">
-         <graphic>
-            <ImageView fitHeight="54.0" fitWidth="50.0" opacity="0.92" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/exitIcon.png" />
-               </image>
-            </ImageView>
-         </graphic></Button>
-      <TextField fx:id="id" layoutX="619.0" layoutY="224.0" prefHeight="53.0" prefWidth="263.0" promptText="ID">
-         <font>
-            <Font size="21.0" />
-         </font></TextField>
-      <Label layoutX="550.0" layoutY="61.0" prefHeight="64.0" prefWidth="432.0" styleClass="text-simple" stylesheets="@application.css" text="Northeast Valley Bookstore" textFill="#070403">
-         <font>
-            <Font name="Apple Braille Pinpoint 8 Dot" size="32.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="650.0" fitWidth="413.0" layoutX="-2.0" layoutY="-16.0">
+      <!-- Top purple header -->
+      <Pane layoutX="0.0" layoutY="0.0" prefHeight="150.0" prefWidth="982.0" styleClass="header-panel">
+         <effect>
+            <DropShadow color="#00000033" height="10.0" radius="4.5" width="10.0" />
+         </effect>
+      </Pane>
+      
+      <!-- Left side image -->
+      <ImageView fitHeight="609.0" fitWidth="413.0" layoutX="0.0" layoutY="0.0">
          <image>
             <Image url="@../Images/librarybackground.png" />
          </image>
       </ImageView>
-      <Label layoutX="457.0" layoutY="283.0" prefHeight="107.0" prefWidth="273.0" text="Password : " textFill="#070403">
+      
+      <!-- Title labels -->
+      <Label layoutX="550.0" layoutY="50.0" prefHeight="64.0" prefWidth="432.0" styleClass="white-text" text="COE LIBRARY">
          <font>
-            <Font name="Futura Medium" size="30.0" />
+            <Font name="System Bold" size="32.0" />
          </font>
       </Label>
-      <Button layoutX="413.0" layoutY="2.0" mnemonicParsing="false" onAction="#switchHomeScreen" prefHeight="44.0" prefWidth="68.0" styleClass="back">
+      
+      <Label layoutX="550.0" layoutY="100.0" prefHeight="64.0" prefWidth="432.0" styleClass="white-text" text="Admin Login">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      
+      <!-- Login form in a white card -->
+      <Pane layoutX="450.0" layoutY="180.0" prefHeight="350.0" prefWidth="480.0" styleClass="card">
+         <children>
+            <Label layoutX="30.0" layoutY="30.0" prefHeight="50.0" prefWidth="100.0" text="ID:">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            
+            <TextField fx:id="id" layoutX="150.0" layoutY="30.0" prefHeight="50.0" prefWidth="300.0" promptText="Enter your ID">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            
+            <Label layoutX="30.0" layoutY="120.0" prefHeight="50.0" prefWidth="120.0" text="Password:">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            
+            <PasswordField fx:id="password" layoutX="150.0" layoutY="120.0" onAction="#switchAdminLogIn" prefHeight="50.0" prefWidth="300.0" promptText="Enter your password">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </PasswordField>
+            
+            <Button layoutX="150.0" layoutY="210.0" mnemonicParsing="false" onAction="#switchAdminLogIn" prefHeight="50.0" prefWidth="140.0" text="Log In">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            
+            <Button layoutX="150.0" layoutY="280.0" mnemonicParsing="false" onAction="#switchAdminSignUp" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: #7B1FA2;" text="Create Account">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            
+            <Text fx:id="errorRegister" fill="#f23838" layoutX="30.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="420.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      
+      <!-- Navigation buttons -->
+      <Button layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#switchHomeScreen" prefHeight="44.0" prefWidth="44.0" styleClass="icon-button">
          <graphic>
-            <ImageView fitHeight="58.0" fitWidth="58.0" styleClass="back">
+            <ImageView fitHeight="30.0" fitWidth="30.0" styleClass="back">
                <image>
                   <Image url="@../Images/backIcon.png" />
                </image>
             </ImageView>
-         </graphic></Button>
-      <PasswordField fx:id="password" layoutX="619.0" layoutY="315.0" onAction="#switchAdminLogIn" prefHeight="53.0" prefWidth="263.0" promptText="Password">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </PasswordField>
-      <Label layoutX="650.0" layoutY="125.0" prefHeight="64.0" prefWidth="432.0" styleClass="text-simple" stylesheets="@application.css" text="Admin Log In" textFill="#070403">
-         <font>
-            <Font name="Apple Braille Pinpoint 8 Dot" size="24.0" />
-         </font>
-      </Label>
-      <Text fx:id="errorRegister" fill="#f23838" layoutX="449.0" layoutY="554.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="262.9999999999999">
-         <font>
-            <Font size="28.0" />
-         </font>
-      </Text>
+         </graphic>
+      </Button>
+      
+      <Button layoutX="920.0" layoutY="20.0" mnemonicParsing="false" onAction="#exitProgram" prefHeight="44.0" prefWidth="44.0" styleClass="icon-button">
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.9" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/exitIcon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
+   <effect>
+      <DropShadow color="#00000040" height="20.0" radius="9.5" width="20.0" />
+   </effect>
 </AnchorPane>

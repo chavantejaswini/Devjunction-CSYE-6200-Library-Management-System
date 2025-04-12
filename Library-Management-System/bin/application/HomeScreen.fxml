@@ -1,68 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="root" fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="982.0" style="-fx-background-color: #e3f6f5; -fx-background-radius: 10;" stylesheets="@application.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
+<AnchorPane id="root" fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: white; -fx-background-radius: 15;" styleClass="root" stylesheets="@application.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
    <children>
-      <Button id="blue" layoutX="173.0" layoutY="316.0" mnemonicParsing="false" onAction="#switchUserScreen" prefHeight="103.0" prefWidth="241.0" style="-fx-background-color: #2a9d8f; -fx-background-radius: 50;" stylesheets="@application.css" text="       USER" />
-      <ImageView fitHeight="71.0" fitWidth="66.0" layoutX="190.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true">
+      <!-- Top dark purple header -->
+      <Pane layoutX="0.0" layoutY="0.0" prefHeight="200.0" prefWidth="1000.0" styleClass="header-panel">
+         <effect>
+            <DropShadow color="#00000033" height="15.0" radius="7.0" width="15.0" />
+         </effect>
+      </Pane>
+      
+      <!-- Header with logo and title -->
+      <VBox alignment="CENTER" layoutX="0.0" layoutY="30.0" prefHeight="200.0" prefWidth="1000.0" spacing="10">
+         <children>
+            <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/library-white-logo.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" contentDisplay="CENTER" styleClass="white-text" text="COE LIBRARY" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="38.0" />
+               </font>
+               <effect>
+                  <DropShadow color="#00000080" height="5.0" radius="2.0" width="5.0" />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" styleClass="white-text" text="CENTER OF EXCELLENCE" textAlignment="CENTER">
+               <font>
+                  <Font name="System Italic" size="22.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      
+      <!-- Main content area (white background) -->
+      <Pane layoutX="100.0" layoutY="230.0" prefHeight="350.0" prefWidth="800.0" styleClass="card">
+         <children>
+            <!-- Continue As section -->
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="350.0" layoutY="20.0" prefHeight="40.0" prefWidth="100.0" text="Continue As" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            
+            <!-- Login options in HBox -->
+            <HBox alignment="CENTER" layoutX="50.0" layoutY="80.0" prefHeight="200.0" prefWidth="700.0" spacing="100">
+               <children>
+                  <!-- User button -->
+                  <Button id="user-button" layoutX="173.0" layoutY="316.0" mnemonicParsing="false" onAction="#switchUserScreen" prefHeight="180.0" prefWidth="260.0" style="-fx-background-color: #7B1FA2; -fx-background-radius: 15;">
+                     <graphic>
+                        <VBox alignment="CENTER" spacing="20">
+                           <children>
+                              <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/userIcon.png" />
+                                 </image>
+                              </ImageView>
+                              <Label styleClass="white-text" text="USER">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="white-text" text="Access Library Resources">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </graphic>
+                     <effect>
+                        <DropShadow color="#00000040" height="10.0" radius="4.5" width="10.0" />
+                     </effect>
+                  </Button>
+                  
+                  <!-- Admin button -->
+                  <Button id="admin-button" layoutX="590.0" layoutY="312.0" mnemonicParsing="false" onAction="#switchAdminScreen" prefHeight="180.0" prefWidth="260.0" style="-fx-background-color: #4A148C; -fx-background-radius: 15;">
+                     <graphic>
+                        <VBox alignment="CENTER" spacing="20">
+                           <children>
+                              <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/admin.png" />
+                                 </image>
+                              </ImageView>
+                              <Label styleClass="white-text" text="ADMIN">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="white-text" text="Manage Library System">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </graphic>
+                     <effect>
+                        <DropShadow color="#00000040" height="10.0" radius="4.5" width="10.0" />
+                     </effect>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      
+      <!-- Footer bar -->
+      <Pane layoutX="0.0" layoutY="610.0" prefHeight="40.0" prefWidth="1000.0" styleClass="footer-panel" />
+      
+      <!-- Decorative elements -->
+      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="150.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true" rotate="15">
          <image>
-            <Image url="@../Images/userIcon.png" />
+            <Image url="@../Images/book1.png" />
          </image>
+         <effect>
+            <DropShadow color="#00000040" height="10.0" radius="4.5" width="10.0" />
+         </effect>
       </ImageView>
-      <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="415.0" layoutY="250.0" prefHeight="75.0" prefWidth="168.0" text="Continue As" textAlignment="CENTER" textFill="#aba1a1">
-         <font>
-            <Font name="Apple Braille" size="23.0" />
-         </font>
-      </Label>
-      <Button id="blue" contentDisplay="RIGHT" layoutX="590.0" layoutY="312.0" mnemonicParsing="false" onAction="#switchAdminScreen" prefHeight="103.0" prefWidth="241.0" style="-fx-background-color: #2a9d8f; -fx-background-radius: 50;" stylesheets="@application.css" text="          ADMIN">
-         <font>
-            <Font name="Apple Braille Outline 6 Dot" size="13.0" />
-         </font>
-      </Button>
-      <Button id="exit" fx:id="exitProgram"  layoutX="910.0" layoutY="1.0" mnemonicParsing="false" onAction="#exitProgram" prefHeight="40.0" prefWidth="40.0" styleClass="back" stylesheets="@application.css">
+      
+      <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="770.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true" rotate="-10">
+         <image>
+            <Image url="@../Images/book2.png" />
+         </image>
+         <effect>
+            <DropShadow color="#00000040" height="10.0" radius="4.5" width="10.0" />
+         </effect>
+      </ImageView>
+      
+      <!-- Exit button -->
+      <Button id="exit" fx:id="exitProgram" layoutX="940.0" layoutY="20.0" mnemonicParsing="false" onAction="#exitProgram" prefHeight="40.0" prefWidth="40.0" styleClass="icon-button">
          <graphic>
-            <ImageView fitHeight="61.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/exitIcon.png" />
                </image>
             </ImageView>
-         </graphic></Button>
-      <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="260.0" layoutY="140.0" prefHeight="75.0" prefWidth="453.0" text="NORTHEAST VALLEY BOOKSTORE" textAlignment="CENTER" textFill="#191610">
-         <font>
-            <Font name="Apple Braille" size="30.0" />
-         </font>
-      </Label>
-      <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="260.0" layoutY="172.0" prefHeight="75.0" prefWidth="453.0" text="HOME TO INFINITE KNOWLEDGE" textAlignment="CENTER" textFill="#191610">
-         <font>
-            <Font name="Apple Braille" size="26.0" />
-         </font>
-      </Label>
-      <Pane layoutX="-63.0" layoutY="-72.0" prefHeight="130.0" prefWidth="178.0" rotate="132.0" style="-fx-background-color: #2c698d; -fx-background-radius: 50;" />
-      <Pane layoutX="860.0" layoutY="540.0" prefHeight="130.0" prefWidth="178.0" rotate="132.0" style="-fx-background-color: #2c698d; -fx-background-radius: 50;" />
-      <Hyperlink fx:id="gitLink" layoutX="22.0" layoutY="522.0" onAction="#openGitHub" prefHeight="60.0" prefWidth="109.0" />
-      <!--
-      <Button fx:id="darkWhiteButton" layoutX="863.0" layoutY="1.0" mnemonicParsing="false" onAction="#changeMode" opacity="0.15" prefHeight="91.0" prefWidth="117.0" textFill="#463a3a">
-         <graphic>
-            <ImageView fx:id="imgMode" fitHeight="75.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/darkMode.png" />
-               </image>
-            </ImageView>
          </graphic>
       </Button>
-      -->
-      <ImageView fitHeight="63.0" fitWidth="66.0" layoutX="612.0" layoutY="332.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Images/admin.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

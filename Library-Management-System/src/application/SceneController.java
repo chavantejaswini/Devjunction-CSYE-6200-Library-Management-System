@@ -85,7 +85,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 	@FXML
 	private Hyperlink gitLink;
 	
-	PersonDAO_Imp pıD = new PersonDAO_Imp();
+	PersonRepository_Imp pıD = new PersonRepository_Imp();
 	
 	
 	@FXML

@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
 import Code.Book;
-import Code.PersonDAO_Imp;
+import Code.PersonRepository_Imp;
 import Code.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -61,7 +61,7 @@ public class giveBook implements Initializable {
 	}
 	public void show() {
 		 ObservableList<User> UserSearchModelObservableList = FXCollections.observableArrayList();
-		 PersonDAO_Imp pdI = new PersonDAO_Imp();
+		 PersonRepository_Imp pdI = new PersonRepository_Imp();
 			List<User> listUser = new ArrayList<User>();
 			 listUser = (List<User>)pdI.listUsers();
 			 for (int i = 0; i < listUser.size(); i++) {

@@ -7,12 +7,12 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PersonDAO_Imp implements PersonDAO {
+public class PersonRepository_Imp implements PersonRepository {
 
 	@Override
 	public void add(Person person) { 
 		try {
-			Connection con = LibraryDB.getConnection();
+			Connection con = DBConfigurations.getConnection();
 			String sql = "INSERT INTO librarysql.person(id,name,surname,password,isAdmin,hasFine) VALUES (?,?,?,?,?,?)";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, person.getId());
@@ -35,7 +35,7 @@ public class PersonDAO_Imp implements PersonDAO {
 	@Override
 	public void update(Person person) { 
 		try {
-			Connection con = LibraryDB.getConnection();
+			Connection con = DBConfigurations.getConnection();
 			String sql = person instanceof Admin ? "UPDATE librarysql.person SET id=?,name=?,surname=?,password=?,hasFine=? WHERE id=?" : "UPDATE librarysql.person SET id=?,name=?,surname=?,password=?,hasFine=?,BookReceived=?, BookReadBefore=?, deadline=? WHERE id=?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, person.getId());
@@ -78,7 +78,7 @@ public class PersonDAO_Imp implements PersonDAO {
 	@Override
 	public void delete(int id) {
 		try {
-			Connection con = LibraryDB.getConnection();
+			Connection con = DBConfigurations.getConnection();
 			String sql = "DELETE FROM librarysql.person WHERE id=?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, id);
@@ -93,7 +93,7 @@ public class PersonDAO_Imp implements PersonDAO {
 	public Person get(int id) {
 		Person person = null;
 		try {
-			Connection con = LibraryDB.getConnection();
+			Connection con = DBConfigurations.getConnection();
 			String sql = "SELECT * FROM librarysql.person WHERE id =?";
 			PreparedStatement bs = con.prepareStatement(sql);
 			bs.setInt(1, id);
@@ -124,7 +124,7 @@ public class PersonDAO_Imp implements PersonDAO {
 	public List<Admin> listAdmins() {
 		List<Admin> list = new ArrayList<>();
 		try {
-			Connection con = LibraryDB.getConnection();
+			Connection con = DBConfigurations.getConnection();
 			String sql = "SELECT * FROM librarysql.person WHERE isAdmin=1";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
@@ -145,7 +145,7 @@ public class PersonDAO_Imp implements PersonDAO {
 	public List<User> listUsers() {
 		List<User> list = new ArrayList<>();
 		try {
-			Connection con = LibraryDB.getConnection();
+			Connection con = DBConfigurations.getConnection();
 			String sql = "SELECT * FROM librarysql.person WHERE isAdmin=0";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
@@ -169,7 +169,7 @@ public class PersonDAO_Imp implements PersonDAO {
 		List<Book> books=new ArrayList<>();
 
 		try {
-			Connection con = LibraryDB.getConnection();
+			Connection con = DBConfigurations.getConnection();
 			String sql = getReceived? "SELECT BookReceived FROM librarysql.person WHERE id =? AND BookReceived IS NOT NULL" : "SELECT BookReadBefore FROM librarysql.person WHERE id =? AND BookReadBefore IS NOT NULL";
 			PreparedStatement bs = con.prepareStatement(sql);
 			bs.setInt(1, id);
@@ -195,7 +195,7 @@ public class PersonDAO_Imp implements PersonDAO {
 	public List<Date> getDeadlines(int id) {
 		List<Date> deadlines=new ArrayList<>();
 		try {
-			Connection con = LibraryDB.getConnection();
+			Connection con = DBConfigurations.getConnection();
 			String sql = "SELECT deadline FROM librarysql.person WHERE id =? AND deadline IS NOT NULL";
 			PreparedStatement bs = con.prepareStatement(sql);
 			bs.setInt(1, id);

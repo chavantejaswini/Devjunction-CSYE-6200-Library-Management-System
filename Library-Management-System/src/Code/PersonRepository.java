@@ -3,7 +3,7 @@ package Code;
 import java.sql.Date;
 import java.util.List;
 
-public interface PersonDAO {
+public interface PersonRepository {
 	public void add(Person person);
 
 	public void update(Person person);

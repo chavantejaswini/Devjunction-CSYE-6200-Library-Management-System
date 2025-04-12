@@ -8,32 +8,56 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.text.Font?>
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="805.0" styleClass="root" stylesheets="@application.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.readBook">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="805.0" styleClass="root" stylesheets="@application.css">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="805.0" style="-fx-background-color: white;" styleClass="root" stylesheets="@application.css">
          <children>
-            <TableView fx:id="searchTable" layoutX="-4.0" layoutY="94.0" prefHeight="515.0" prefWidth="813.0" stylesheets="@application.css">
-               <columns>
-                  <TableColumn fx:id="ISBN" prefWidth="91.0" text="ISBN" />
-                  <TableColumn fx:id="name" prefWidth="328.0" text="NAME" />
-                  <TableColumn fx:id="author" prefWidth="248.0" text="AUTHOR" />
-                  <TableColumn fx:id="pages" prefWidth="140.0" text="PAGES" />
-               </columns>
-            </TableView>
-            <TextField layoutX="200.0" layoutY="-47.0" text="SEARCH" />
-            <Label layoutX="11.0" layoutY="19.0" prefHeight="68.0" prefWidth="381.0" style="-fx-background-color: #a0d2eb; -fx-background-radius: 50;" styleClass="table" stylesheets="@application.css" text="   Books I have read">
+            <!-- Header section -->
+            <Pane layoutX="0.0" layoutY="0.0" prefHeight="80.0" prefWidth="805.0" styleClass="header-panel">
+               <effect>
+                  <DropShadow color="#00000033" height="10.0" radius="4.5" width="10.0" />
+               </effect>
+            </Pane>
+            
+            <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="15.0" spacing="15">
+               <children>
+                  <Label prefHeight="50.0" prefWidth="300.0" styleClass="white-text" text="Books I Have Read">
+                     <font>
+                        <Font name="System Bold" size="28.0" />
+                     </font>
+                  </Label>
+                  
+                  <ImageView fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@../Images/owlIcon.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            
+            <!-- Search field -->
+            <TextField fx:id="textBookSearch" layoutX="600.0" layoutY="25.0" prefHeight="30.0" prefWidth="180.0" promptText="Search books">
                <font>
-                  <Font size="37.0" />
+                  <Font size="14.0" />
                </font>
-            </Label>
-            <ImageView fitHeight="68.0" fitWidth="91.0" layoutX="295.0" layoutY="19.0">
-               <image>
-                  <Image url="@../Images/owlIcon.png" />
-               </image>
-            </ImageView>
-            <TextField fx:id="textBookSearch" layoutX="597.0" layoutY="28.0" promptText="Search" />
+            </TextField>
+            
+            <!-- Table view with books -->
+            <TableView fx:id="searchTable" layoutX="0.0" layoutY="100.0" prefHeight="509.0" prefWidth="805.0" stylesheets="@application.css">
+               <columns>
+                  <TableColumn fx:id="ISBN" prefWidth="120.0" text="ISBN" />
+                  <TableColumn fx:id="name" prefWidth="320.0" text="TITLE" />
+                  <TableColumn fx:id="author" prefWidth="240.0" text="AUTHOR" />
+                  <TableColumn fx:id="pages" prefWidth="120.0" text="PAGES" />
+               </columns>
+               <effect>
+                  <DropShadow color="#0000001a" height="10.0" radius="4.5" width="10.0" />
+               </effect>
+            </TableView>
          </children>
       </AnchorPane>
    </children>

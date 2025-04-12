@@ -34,7 +34,7 @@ public class User extends Person {
 		return null;
 	}
 	public void syncData(int id) {
-		PersonDAO_Imp personDAO=new PersonDAO_Imp();
+		PersonRepository_Imp personDAO=new PersonRepository_Imp();
 		BookReceived = personDAO.listUserBooks(id, true);
 		BookReadBefore = personDAO.listUserBooks(id, false);
 		deadlines = personDAO.getDeadlines(id);

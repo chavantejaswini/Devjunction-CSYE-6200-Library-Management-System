@@ -9,55 +9,143 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="805.0" styleClass="root" stylesheets="@application.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.giveBook">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="805.0" style="-fx-background-color: #e3f6f5;" styleClass="root" stylesheets="@application.css">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="805.0" style="-fx-background-color: white;" styleClass="root" stylesheets="@application.css">
          <children>
-            <TableView fx:id="searchTable" layoutX="-4.0" layoutY="227.0" prefHeight="382.0" prefWidth="382.0" stylesheets="@application.css">
-               <columns>
-                  <TableColumn fx:id="ISBN" prefWidth="93.0" text="ISBN" />
-                  <TableColumn fx:id="name" prefWidth="214.0" text="NAME" />
-                  <TableColumn fx:id="quantity" prefWidth="88.0" text="Quantity" />
-               </columns>
-            </TableView>
-            <Label layoutX="11.0" layoutY="19.0" prefHeight="68.0" prefWidth="246.0" style="-fx-background-color: #a0d2eb; -fx-background-radius: 50;" styleClass="table" stylesheets="@application.css" text=" Give Book">
+            <!-- Header section -->
+            <Pane layoutX="0.0" layoutY="0.0" prefHeight="120.0" prefWidth="805.0" styleClass="header-panel">
+               <effect>
+                  <DropShadow color="#00000033" height="10.0" radius="4.5" width="10.0" />
+               </effect>
+            </Pane>
+            
+            <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="30.0" spacing="20">
+               <children>
+                  <Label prefHeight="60.0" prefWidth="200.0" styleClass="white-text" text="Give Book">
+                     <font>
+                        <Font name="System Bold" size="32.0" />
+                     </font>
+                  </Label>
+                  
+                  <ImageView fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@../Images/giveBook.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            
+            <!-- Search field -->
+            <TextField fx:id="textBookSearch" layoutX="580.0" layoutY="45.0" prefHeight="30.0" prefWidth="200.0" promptText="Search">
                <font>
-                  <Font size="37.0" />
+                  <Font size="14.0" />
                </font>
-            </Label>
-            <TextField fx:id="textBookSearch" layoutX="609.0" layoutY="53.0" promptText="Search" />
-            <ImageView fitHeight="56.0" fitWidth="64.0" layoutX="180.0" layoutY="26.0" opacity="0.74">
-               <image>
-                  <Image url="@../Images/giveBook.png" />
-               </image>
-            </ImageView>
-            <TextField fx:id="ISBNgiveBook" layoutX="11.0" layoutY="190.0" promptText="ISBN" />
-            <TextField fx:id="IDgiveBook" layoutX="415.0" layoutY="190.0" promptText="ID" />
-            <Text fill="BLACK" layoutX="11.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ISBN">
+            </TextField>
+            
+            <!-- Book lending form -->
+            <Pane layoutX="20.0" layoutY="130.0" prefHeight="90.0" prefWidth="765.0" styleClass="card">
+               <children>
+                  <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="15.0" spacing="20">
+                     <children>
+                        <VBox spacing="5">
+                           <children>
+                              <Label text="ISBN">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="ISBNgiveBook" prefHeight="30.0" prefWidth="200.0" promptText="Enter book ISBN">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        
+                        <VBox spacing="5">
+                           <children>
+                              <Label text="User ID">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="IDgiveBook" prefHeight="30.0" prefWidth="200.0" promptText="Enter user ID">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        
+                        <Button layoutX="712.0" layoutY="190.0" mnemonicParsing="false" onAction="#giveABook" prefHeight="40.0" prefWidth="100.0" text="Give Book">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </Pane>
+            
+            <!-- Message text for errors or confirmations -->
+            <Text fx:id="message" fill="#f23838" layoutX="20.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-simple" wrappingWidth="765.0">
                <font>
-                  <Font name="Al Tarikh Regular" size="13.0" />
+                  <Font size="16.0" />
                </font>
             </Text>
-            <Text fill="BLACK" layoutX="415.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID">
-               <font>
-                  <Font name="Al Tarikh Regular" size="13.0" />
-               </font>
-            </Text>
-            <Button layoutX="712.0" layoutY="190.0" mnemonicParsing="false" onAction="#giveABook" prefHeight="25.0" prefWidth="79.0" text="Give" />
-            <TableView fx:id="UserTable" layoutX="408.0" layoutY="227.0" prefHeight="382.0" prefWidth="396.0" stylesheets="@application.css">
-               <columns>
-                  <TableColumn fx:id="ID" prefWidth="93.0" text="ID" />
-                  <TableColumn fx:id="nameUser" prefWidth="341.0" text="NAME" />
-               </columns>
-            </TableView>
-            <Text fx:id="message" fill="#f23838" layoutX="11.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-simple" wrappingWidth="431.0">
-               <font>
-                  <Font size="28.0" />
-               </font>
-            </Text>
+            
+            <!-- Tables section -->
+            <HBox layoutX="20.0" layoutY="260.0" prefHeight="330.0" prefWidth="765.0" spacing="20">
+               <children>
+                  <!-- Books table -->
+                  <VBox spacing="10">
+                     <children>
+                        <Label text="Available Books" textFill="#4A148C">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <TableView fx:id="searchTable" prefHeight="300.0" prefWidth="370.0" stylesheets="@application.css">
+                           <columns>
+                              <TableColumn fx:id="ISBN" prefWidth="80.0" text="ISBN" />
+                              <TableColumn fx:id="name" prefWidth="200.0" text="TITLE" />
+                              <TableColumn fx:id="quantity" prefWidth="90.0" text="QUANTITY" />
+                           </columns>
+                           <effect>
+                              <DropShadow color="#0000001a" height="10.0" radius="4.5" width="10.0" />
+                           </effect>
+                        </TableView>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Users table -->
+                  <VBox spacing="10">
+                     <children>
+                        <Label text="Library Users" textFill="#4A148C">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <TableView fx:id="UserTable" prefHeight="300.0" prefWidth="370.0" stylesheets="@application.css">
+                           <columns>
+                              <TableColumn fx:id="ID" prefWidth="80.0" text="ID" />
+                              <TableColumn fx:id="nameUser" prefWidth="290.0" text="NAME" />
+                           </columns>
+                           <effect>
+                              <DropShadow color="#0000001a" height="10.0" radius="4.5" width="10.0" />
+                           </effect>
+                        </TableView>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
    </children>

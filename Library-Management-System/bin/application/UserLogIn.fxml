@@ -9,22 +9,27 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.effect.DropShadow?>
 
 <BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="982.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
    <left>
-      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #bae8e8;" BorderPane.alignment="CENTER">
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #4A148C;" styleClass="nav-sidebar" BorderPane.alignment="CENTER">
          <children>
             <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="136.0" prefWidth="170.0">
                <children>
-                  <ImageView fitHeight="71.0" fitWidth="75.0" layoutX="38.0" layoutY="-3.0" opacity="0.75">
+                  <ImageView fitHeight="71.0" fitWidth="75.0" layoutX="38.0" layoutY="-3.0" opacity="0.9">
                      <image>
                         <Image url="@../Images/libIcon.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="25.0" layoutY="84.0" text="User Home" />
+                  <Label layoutX="25.0" layoutY="84.0" text="User Home" styleClass="white-text">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
-            <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="146.0" mnemonicParsing="false" onMouseClicked="#home" prefHeight="59.0" prefWidth="176.0" style="-fx-background-color: #bae8e8;" styleClass="blue" stylesheets="@application.css" text="Home">
+            <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="146.0" mnemonicParsing="false" onMouseClicked="#home" prefHeight="59.0" prefWidth="176.0" styleClass="sidebar-button" text="Home">
                <graphic>
                   <ImageView fitHeight="52.0" fitWidth="53.0">
                      <image>
@@ -33,7 +38,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#searchBook" prefHeight="59.0" prefWidth="176.0" style="-fx-background-color: #bae8e8;" styleClass="blue" stylesheets="@application.css" text="Search Book">
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#searchBook" prefHeight="59.0" prefWidth="176.0" styleClass="sidebar-button" text="Search Book">
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="52.0">
                      <image>
@@ -41,35 +46,38 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#readBook" prefHeight="65.0" prefWidth="170.0" style="-fx-background-color: #bae8e8;" styleClass="blue" stylesheets="@application.css" text="Read Book">
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#readBook" prefHeight="65.0" prefWidth="170.0" styleClass="sidebar-button" text="Read Book">
                <graphic>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" opacity="0.7">
+                  <ImageView fitHeight="50.0" fitWidth="50.0" opacity="0.9">
                      <image>
                         <Image url="@../Images/readBook.png" />
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#switchUserProfile" prefHeight="62.0" prefWidth="167.0" style="-fx-background-color: #bae8e8;" styleClass="blue" stylesheets="@application.css" text="User Profile">
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#switchUserProfile" prefHeight="62.0" prefWidth="167.0" styleClass="sidebar-button" text="User Profile">
                <graphic>
-                  <ImageView fitHeight="47.0" fitWidth="48.0" opacity="0.78">
+                  <ImageView fitHeight="47.0" fitWidth="48.0" opacity="0.9">
                      <image>
                         <Image url="@../Images/usIcon.png" />
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="exitProgram" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#exitProgram" prefHeight="52.0" prefWidth="172.0" style="-fx-background-color: #bae8e8;" styleClass="blue" stylesheets="@application.css" text="Exit">
+            <Button fx:id="exitProgram" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#exitProgram" prefHeight="52.0" prefWidth="172.0" styleClass="sidebar-button" text="Exit">
                <graphic>
-                  <ImageView fitHeight="49.0" fitWidth="56.0" opacity="0.67">
+                  <ImageView fitHeight="49.0" fitWidth="56.0" opacity="0.9">
                      <image>
                         <Image url="@../Images/exitIcon2.png" />
                      </image>
                   </ImageView>
                </graphic></Button>
          </children>
+         <effect>
+            <DropShadow color="#00000040" height="10.0" radius="4.5" width="10.0" />
+         </effect>
       </VBox>
    </left>
    <center>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="805.0" styleClass="root" style="-fx-background-color: #e3f6f5; -fx-background-radius: 10;" stylesheets="@application.css" BorderPane.alignment="CENTER">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="805.0" styleClass="root" style="-fx-background-color: white; -fx-background-radius: 10;" stylesheets="@application.css" BorderPane.alignment="CENTER">
          <children>
             <Button layoutY="-8.0" mnemonicParsing="false" onAction="#switchUserScreen" prefHeight="76.0" prefWidth="90.0" styleClass="back">
                <graphic>
@@ -79,9 +87,14 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Label layoutX="119.0" layoutY="173.0" prefHeight="225.0" prefWidth="627.0" styleClass="text-simple" stylesheets="@application.css" text="Northeast Valley Bookstore">
+            <Label layoutX="119.0" layoutY="173.0" prefHeight="225.0" prefWidth="627.0" styleClass="text-simple" stylesheets="@application.css" text="COE LIBRARY">
                <font>
                   <Font size="43.0" />
+               </font>
+            </Label>
+            <Label layoutX="119.0" layoutY="265.0" prefHeight="50.0" prefWidth="600.0" styleClass="text-simple" stylesheets="@application.css" text="CENTER OF EXCELLENCE">
+               <font>
+                  <Font size="30.0" />
                </font>
             </Label>
             <Hyperlink layoutX="650.0" layoutY="530.0" onAction="#openContact" prefHeight="59.0" prefWidth="71.0" styleClass="blue">
